@@ -5,8 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./src/output.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 </head>
-<body>
-  
+
+<body class="min-h-screen bg-black flex justify-center items-center">
+  <div id="terminal" class="bg-[#4B5159]/60 h-[700px] w-[1100px] rounded-lg border border-solid border-[2px] border-white">
+    <div class="flex">
+      <div class="ml-3 mt-2 h-[20px] w-fit bg-[#FFE345] flex justify-center items-center rounded-l-lg" 
+      style="clip-path: polygon(0% 0%, 88% 0%, 100% 50%, 88% 100%, 0% 100%);">
+        <p class="font-['JetBrains_Mono'] ml-3 mr-4 text-black flex justify-center items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-terminal" viewBox="0 0 16 16">
+          <path d="M6 9a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3A.5.5 0 0 1 6 9M3.854 4.146a.5.5 0 1 0-.708.708L4.793 6.5 3.146 8.146a.5.5 0 1 0 .708.708l2-2a.5.5 0 0 0 0-.708z"/>
+          <path d="M2 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm12 1a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/>
+        </svg>jan</p>
+      </div>
+
+      <div class="mt-2 h-[20px] w-fit bg-[#FF8000] flex justify-center items-center" 
+        style="clip-path: polygon(0% 0%,95% 0%, 100% 50%, 95% 100%, 0% 100%, 7% 50%);">
+        <div class="font-['JetBrains_Mono'] ml-4 mr-5 text-white flex justify-center items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-folder-fill" viewBox="0 0 16 16">
+            <path d="M9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.825a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31L.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3m-8.322.12q.322-.119.684-.12h5.396l-.707-.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981z"/>
+          </svg>
+          oh-my-posh
+        </div>
+      </div>
+      <div class="-ml-[10px] mt-2 h-[20px] w-fit bg-[#00FFD5] flex justify-center items-center" 
+        style="clip-path: polygon(0% 0%,92% 0%, 100% 50%, 92% 100%, 0% 100%, 7% 50%);">
+        <div class="font-['JetBrains_Mono'] ml-4 mr-5 text-black flex justify-center items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+          </svg>
+          main
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="mt-2 h-[20px] w-fit bg-[#00B3CF] flex justify-center items-center rounded-r-lg" 
+      style="clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 20% 50%);">
+        <p class="font-['JetBrains_Mono'] ml-3 mr-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+          <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425z"/>
+        </svg></p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 rounded-lg px-4 py-2 relative flex-1">
+      <span id="prompt" class="font-['JetBrains_Mono'] text-[#00D4B1]">$</span>
+
+      <input
+        type="text"
+        id="terminal-input"
+        autocomplete="off"
+        spellcheck="false"
+        class="caret-transparent flex-1 w-full bg-transparent outline-none border-none text-white font-mono"
+      >
+      <span
+        id="cursor"
+        class="absolute pointer-events-none bg-white w-[9px] h-[20px]"
+      ></span>
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById("terminal-input");
+    const cursor = document.getElementById("cursor");
+    const prompt = document.getElementById("prompt");
+
+    input.focus();
+
+    const terminal = document.getElementById("terminal");
+
+    terminal.addEventListener("mousedown", (e) => {
+      if (e.target === input) return;
+
+      e.preventDefault();
+      input.focus();
+    });
+
+    function updateCursor() {
+      const text = input.value;
+
+      const span = document.createElement("span");
+      span.style.font = getComputedStyle(input).font;
+      span.style.visibility = "hidden";
+      span.style.position = "absolute";
+      span.style.whiteSpace = "pre";
+      span.textContent = text;
+
+      document.body.appendChild(span);
+
+      const textWidth = span.offsetWidth;
+
+      const inputOffsetLeft = input.offsetLeft;
+
+      cursor.style.left = `${inputOffsetLeft + textWidth}px`;
+
+      span.remove();
+    }
+
+    input.addEventListener("input", updateCursor);
+
+    input.addEventListener("focus", () => {
+      cursor.classList.remove("hidden");
+    });
+
+    input.addEventListener("blur", () => {
+      cursor.classList.add("hidden");
+    });
+
+    window.addEventListener("resize", updateCursor);
+
+    updateCursor();
+  </script>
 </body>
 </html>
