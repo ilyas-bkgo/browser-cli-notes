@@ -67,56 +67,6 @@
     </div>
   </div>
 
-  <script>
-    const input = document.getElementById("terminal-input");
-    const cursor = document.getElementById("cursor");
-    const prompt = document.getElementById("prompt");
-
-    input.focus();
-
-    const terminal = document.getElementById("terminal");
-
-    terminal.addEventListener("mousedown", (e) => {
-      if (e.target === input) return;
-
-      e.preventDefault();
-      input.focus();
-    });
-
-    function updateCursor() {
-      const text = input.value;
-
-      const span = document.createElement("span");
-      span.style.font = getComputedStyle(input).font;
-      span.style.visibility = "hidden";
-      span.style.position = "absolute";
-      span.style.whiteSpace = "pre";
-      span.textContent = text;
-
-      document.body.appendChild(span);
-
-      const textWidth = span.offsetWidth;
-
-      const inputOffsetLeft = input.offsetLeft;
-
-      cursor.style.left = `${inputOffsetLeft + textWidth}px`;
-
-      span.remove();
-    }
-
-    input.addEventListener("input", updateCursor);
-
-    input.addEventListener("focus", () => {
-      cursor.classList.remove("hidden");
-    });
-
-    input.addEventListener("blur", () => {
-      cursor.classList.add("hidden");
-    });
-
-    window.addEventListener("resize", updateCursor);
-
-    updateCursor();
-  </script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>
