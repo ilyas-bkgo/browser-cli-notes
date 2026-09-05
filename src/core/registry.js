@@ -9,23 +9,28 @@ export class CommandRegistry {
     }
     this.commands.set(commandDef.name, commandDef);
   }
-
-  // Notice the 'async' keyword here
+  
   async execute(parsedInput, context = {}) {
-    const { command, args, flags } = parsedInput;
+  const { command, args, flags } = parsedInput;
 
-    if (!command) return "";
+  console.log(`[Registry] Attempting to run '${command}' with args:`, args);
+  console.log(`[Registry] Registered commands:`, Array.from(this.commands.keys()));
 
-    const cmd = this.commands.get(command);
-    if (!cmd) {
-      return `${command}: command not found`;
-    }
+  if (!command) return "";
 
-    try {
-      // Notice the 'await' keyword here
-      return await cmd.execute(args, flags, context);
-    } catch (err) {
-      return `Error executing ${command}: ${err.message}`;
-    }
+  const cmd = this.commands.get(command);
+  if (!cmd) {
+    console.error(`[Registry] Command '${command}' NOT found in Map!`);
+    return `${command}: command not found`;
   }
+
+  try {
+    const output = await cmd.execute(args, flags, context);
+    console.log(`[Registry] '${command}' executed successfully. Output:`, output);
+    return output;
+  } catch (err) {
+    console.error(`[Registry] Exception inside '${command}':`, err);
+    return `Error executing ${command}: ${err.message}`;
+  }
+}
 }
