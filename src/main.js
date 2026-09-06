@@ -7,6 +7,7 @@ import { lsCommand } from "./core/commands/ls.js";
 import { touchCommand } from "./core/commands/touch.js";
 import { catCommand } from "./core/commands/cat.js";
 import { cdCommand } from "./core/commands/cd.js";
+import { pwdCommand } from "./core/commands/pwd.js";
 
 import { openDatabase, ROOT_ID } from "./storage/db.js";
 import { initTerminal, appendTerminalLine, updatePrompt } from "./ui/terminal.js";
@@ -30,6 +31,7 @@ async function startApp() {
   registry.register(touchCommand);
   registry.register(catCommand);
   registry.register(cdCommand);
+  registry.register(pwdCommand);
 
   // initialize terminal UI listener
   initTerminal(async (rawInput) => {
