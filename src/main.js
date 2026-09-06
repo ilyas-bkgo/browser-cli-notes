@@ -6,9 +6,10 @@ import { mkdirCommand } from "./core/commands/mkdir.js";
 import { lsCommand } from "./core/commands/ls.js";
 import { touchCommand } from "./core/commands/touch.js";
 import { catCommand } from "./core/commands/cat.js";
+import { cdCommand } from "./core/commands/cd.js";
 
-import { openDatabase } from "./storage/db.js";
-import { initTerminal, appendTerminalLine } from "./ui/terminal.js";
+import { openDatabase, ROOT_ID } from "./storage/db.js";
+import { initTerminal, appendTerminalLine, updatePrompt } from "./ui/terminal.js";
 
 async function startApp() {
   // initialize IndexedDB
@@ -17,8 +18,9 @@ async function startApp() {
   // set initial state context
   const context = {
     db: db,
-    currentFolderId: "root",
-    currentPath: "/"
+    currentFolderId: ROOT_ID,
+    currentPath: "/",
+    folderStack: [{ id: ROOT_ID, name: "/" }]
   };
 
   // 4. Instantiate and register commands
@@ -27,6 +29,7 @@ async function startApp() {
   registry.register(lsCommand);
   registry.register(touchCommand);
   registry.register(catCommand);
+  registry.register(cdCommand);
 
   // initialize terminal UI listener
   initTerminal(async (rawInput) => {
@@ -48,11 +51,16 @@ async function startApp() {
         console.warn('execution empty or undefined result');
       }
 
+      updatePrompt(context.currentPath);
+
     } catch (err) {
       console.log('Pipeline errror: ', err);
       appendTerminalLine(`Error: ${err.message}`);
     }
   });
+
+  // set the prompt to "/ $" before the first command ever runs
+  updatePrompt(context.currentPath);
 }
 
 startApp();

@@ -1,6 +1,8 @@
 const DB_NAME = "TerminalNotesDB";
 const DB_VERSION = 1;
 
+export const ROOT_ID = 0;
+
 export function openDatabase() {
   return new Promise((resolve, reject) => {
     // Open (or create) the IndexedDB database
@@ -15,6 +17,9 @@ export function openDatabase() {
         const folderStore = db.createObjectStore("folders", { keyPath: "id", autoIncrement: true });
         folderStore.createIndex("parentId", "parentId", { unique: false });
         folderStore.createIndex("name", "name", { unique: false });
+        
+        // Seed the root folder as a real record instead of a special-cased string.
+        folderStore.add({ id: ROOT_ID, name:"/", parentId: null, createdAT: new Date().toISOString() });
       }
 
       // 2. Notes Store (Primary Key: auto-incrementing id)
@@ -36,7 +41,7 @@ export function openDatabase() {
 }
 
 
-export function addFolder(db, name, parentId = null) {
+export function addFolder(db, name, parentId = ROOT_ID) {
   return new Promise((resolve, reject) => {
     // 1. Open a readwrite transaction on the "folders" store
     const tx = db.transaction("folders", "readwrite");
@@ -81,7 +86,7 @@ export function getFoldersByParent(db, parentId = null) {
   });
 }
 
-export function addNote(db, title, content = "", folderId = "root") {
+export function addNote(db, title, content = "", folderId = ROOT_ID) {
   return new Promise((resolve, reject) => {
     if (!db) {
       console.error("[DB Error] Database instance (db) is null or undefined!");
@@ -95,7 +100,7 @@ export function addNote(db, title, content = "", folderId = "root") {
     const noteData = {
       title,
       content,
-      folderId: folderId ?? "root",
+      folderId: folderId ?? ROOT_ID,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString()
     };
@@ -120,7 +125,7 @@ export function getNotesByFolder(db, folderId = "root") {
     const store = tx.objectStore("notes");
     const index = store.index("folderId");
 
-    const request = index.getAll(folderId ?? "root");
+    const request = index.getAll(folderId ?? ROOT_ID);
 
     request.onsuccess = (event) => resolve(event.target.result);
     request.onerror = (event) => reject(event.target.error.message);
