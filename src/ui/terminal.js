@@ -95,3 +95,19 @@ export function updatePrompt(path) {
         inputEl.dispatchEvent(new Event("input"));
     }
 }
+
+export function clearTerminal() {
+    const terminal = document.getElementById("terminal");
+    const inputContainer = document.getElementById("input-container") || document.getElementById("prompt").parentElement;
+
+    if (!terminal || !inputContainer) return;
+
+    // #terminal's first child is the header/breadcrumb bar; everything
+    // appendTerminalLine ever inserts lands between it and the input row.
+    // Remove every child except those two, regardless of how many lines exist.
+    const header = terminal.firstElementChild;
+
+    Array.from(terminal.children)
+        .filter((child) => child !== header && child !== inputContainer)
+        .forEach((line) => line.remove());
+}
